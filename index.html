@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <style>
+
+  </style>
+  <!-- <script>src app.js </script> -->
+  <script>
+    var Wins = 0;
+    var userGuess = "";
+    var correctGuess = [];
+    var incorrectGuess = [];
+    var word = [];
+    var randomWord = "";
+    var guesses;
+    var counter = 0;
+    var space;
+    var guessesLeft = 13;
+    var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+    function generateWord() {
+      var word = ["soccer", "football", "volleyball", "baseball", "tennis", "handball", "hockey"]
+      for (i = 0; i < word.length; i++) {
+        const element = word[i];
+      }
+      var randomWord = word[Math.floor(Math.random() * word.length)];
+
+      console.log(word)
+    }
+    generateWord();
+
+    document.onkeyup() = function(event) {
+      var userGuess = event.key;
+      console.log(userGuess)
+    }
+    var n = computerWord.IndexOf(userGuess)
+
+    // window.onload = function () {
+    //  //  var needed
+
+
+    //   // elements
+    //   var showGuessesLeft = document.getElementById("GuessRemaining");
+    //   var showWins = document.getElementById("Wins:");
+    //   var showLosses = document.getElementById("Losses");
+
+    //   // letters ul
+
+      // on key up, variable for on key up
+    // }
+
+  </script>
+</body>
+
+</html>

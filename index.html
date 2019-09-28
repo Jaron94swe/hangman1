@@ -11,56 +11,218 @@
 <body>
 
 
+  <h1 id= "Header">Press any key to get started!</h1>
+  <p id="Wins">Wins: </p>
+  <p id="Losses">Losses: </p>
+  <p id="GuessesLeft"> Guesses Remaining: </p>
+
+  <span id="hold"> </span>
+  <p id="LettersGuessed">Letters Guessed:</p>
+
+  <div id="display"></div>
+  <div id="buttons"></div>
+  <button id="reset">Play again</button>
 
   <style>
-
+    body {
+      background: url(https://images-eu.ssl-images-amazon.com/images/I/81xt2%2BPD0IL.png);
+      margin: 0 auto;
+      margin-top: 5%;
+      padding: 10px;
+      width: 600px;
+      opacity: .85;
+      object-fit: cover;
+    }
   </style>
-  <!-- <script>src app.js </script> -->
   <script>
-    var Wins = 0;
-    var userGuess = "";
-    var correctGuess = [];
-    var incorrectGuess = [];
-    var word = [];
-    var randomWord = "";
-    var guesses;
-    var counter = 0;
-    var space;
-    var guessesLeft = 13;
-    var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-    function generateWord() {
-      var word = ["soccer", "football", "volleyball", "baseball", "tennis", "handball", "hockey"]
-      for (i = 0; i < word.length; i++) {
-        const element = word[i];
+    // remove this, want onkeyup event to capture the user imput.
+    // document.onkeyup(event)
+
+    document.onkeypress = function (event) {
+      if (gameInProgress) {
+        var userGuess = event.key;
+        var foundLetter = false;
+        // forloop
+        for (i = 0; i < randomWord.length; i++) {
+          if (userGuess === randomWord[i]) {
+            // console.log("found the letter")
+            guesses[i].innerHTML = userGuess + " ";
+            foundLetter = true;
+            // console.log(guess)
+          }
+        }
+        if (foundLetter === false) {
+          // update the guessed letters
+          // console.log('Didn\'t find letter')
+          showLettersGuessed.innerHTML = showLettersGuessed.innerHTML + userGuess + ", "
+          guessesRemaining--
+          // console.log(guessesRemaining)
+        }
+        comments()
       }
-      var randomWord = word[Math.floor(Math.random() * word.length)];
-
-      console.log(word)
     }
-    generateWord();
 
-    document.onkeyup() = function(event) {
-      var userGuess = event.key;
-      console.log(userGuess)
+    // remove catagories
+    // add var for wins and losses
+    // 
+
+    var wins = 0;
+    var losses = 0;
+    var words;              // Selected word
+    var randomWord;
+    var guess;             // Geuss
+    var guesses = [];      // Stored geusses
+    var guessesRemaining;             // Lives
+    var counter;           // Count correct geusses
+    var space;              // Number of spaces in word '-'
+    var randomWordHolder;
+    var gameInProgress = false;
+
+
+    // remove clue
+    // add wins, losses, guessesLeft
+    var showWins = document.getElementById("Wins")
+    var showLosses = document.getElementById("Losses")
+    var showGuessesLeft = document.getElementById("GuessesLeft")
+    var showLettersGuessed = document.getElementById("LettersGuessed")
+
+
+    // creat function to start game
+
+    // remove alphabet ul
+
+
+
+    // remove Catagory
+
+
+    // onclick of start button, select a word, then map over the word to creat underscore
+    // Create geusses ul
+
+    result = function () {
+      randomWordHolder = document.getElementById('hold');
+      correct = document.createElement('ul');
+
+
+      for (var i = 0; i < randomWord.length; i++) {
+        correct.setAttribute('id', 'my-word');
+        guess = document.createElement('span');
+
+        guess.setAttribute('class', 'guess');
+        if (randomWord[i] === "-") {
+          guess.innerHTML = "-";
+          space = 1;
+        } else {
+          guess.innerHTML = "_ ";
+        }
+
+        guesses.push(guess);
+        randomWordHolder.appendChild(correct);
+        correct.appendChild(guess);
+      }
     }
-    var n = computerWord.IndexOf(userGuess)
+    // show lives is equal to number of guesses remaining
+    // Show lives
+    comments = function () {
+      showGuessesLeft.innerHTML = "You have " + guessesRemaining + " guesses left.";
+      if (guessesRemaining < 1) {
+        showGuessesLeft.innerHTML = "Game Over";
+        losses++
+        gameInProgress = false
+      }
+      var allCorrect = true;
 
-    // window.onload = function () {
-    //  //  var needed
+      for (var i = 0; i < guesses.length; i++) {
+        if (randomWord[i] != guesses[i].innerHTML[0]) {
+          allCorrect = false;
+        }
+      }
+      if (allCorrect === true) {
+        showGuessesLeft.innerHTML = "You Win!";
+        wins++
+        gameInProgress = false
+      }
+      showWins.innerHTML = "Wins: " + wins
+      showLosses.innerHTML = "Losses: " + losses
+      if (!gameInProgress){
+        document.getElementById('Header').innerHTML = "Press \"Play Again\" to Start Over" 
+      }
+    }
+    // remove animate man
+    // Animate man
 
 
-    //   // elements
-    //   var showGuessesLeft = document.getElementById("GuessRemaining");
-    //   var showWins = document.getElementById("Wins:");
-    //   var showLosses = document.getElementById("Losses");
 
-    //   // letters ul
+    // Hangman
+    // remove canvas
 
-      // on key up, variable for on key up
+
+    // OnClick Function
+    // check = function () {
+    //   list.onkeypress = function () {
+    //     console.log("we are in")
+    //      geuss = (this.innerHTML);
+    //     this.setAttribute("class", "active");
+    //     this.onkeypress = null;
+    //     for (var i = 0; i < randomWord.length; i++) {
+    //       if (randomWord[i] === geuss) {
+    //         geusses[i].textContent = geuss;
+    //         counter += 1;
+    //       }
+    //     }
+    //     var j = (randomWord.indexOf(geuss));
+    //     console.log(j)
+    //     if (j === -1) {
+    //       guessesRemaining -= 1;
+    //       console.log(guessesRemaining, "only in this part");
+    //       comments();
+    //     } else {
+    //       comments();
+    //     }
+    //   }
     // }
 
+
+    // Play
+    play = function () {
+      words = [
+        "soccer", "football", "volleyball", "baseball", "tennis", "handball", "hockey"
+      ];
+
+      randomWord = words[Math.floor(Math.random() * words.length)];
+      console.log(randomWord);
+
+      guesses = [];
+      guessesRemaining = 12;
+      counter = 0;
+      space = 0;
+      gameInProgress = true;
+      result();
+      comments();
+      document.getElementById('Header').innerHTML = "The Game is Afoot"
+    }
+
+    play();
+
+
+    // Reset
+
+    document.getElementById('reset').onclick = function () {
+      var guessesRemaining = 12
+      correct.parentNode.removeChild(correct);
+      showLettersGuessed.innerHTML = "Letters Guessed: ";
+      // showGuessesLeft.innerHTML ="Guesses Remaining:" + guessesRemaining;
+      play();
+    }
+
   </script>
+
+
+</body>
+
+</html>
+</script>
 </body>
 
 </html>

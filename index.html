@@ -10,8 +10,8 @@
 
 <body>
 
-
-  <h1 id= "Header">Press any key to get started!</h1>
+  <h1>Guess that sport!</h1>
+  <h1 id="Header">Press any key to get started!</h1>
   <p id="Wins">Wins: </p>
   <p id="Losses">Losses: </p>
   <p id="GuessesLeft"> Guesses Remaining: </p>
@@ -24,14 +24,22 @@
   <button id="reset">Play again</button>
 
   <style>
+    html {
+      background: url(https://images-eu.ssl-images-amazon.com/images/I/81xt2%2BPD0IL.png) no-repeat center center fixed;
+      -webkit-background-size: 100% 100%;
+      -moz-background-size: 100% 100%;
+      -o-background-size: 100% 100%;
+      background-size: 100% 100%;
+
+    }
+
     body {
-      background: url(https://images-eu.ssl-images-amazon.com/images/I/81xt2%2BPD0IL.png);
+
       margin: 0 auto;
       margin-top: 5%;
       padding: 10px;
       width: 600px;
       opacity: .85;
-      object-fit: cover;
     }
   </style>
   <script>
@@ -145,8 +153,8 @@
       }
       showWins.innerHTML = "Wins: " + wins
       showLosses.innerHTML = "Losses: " + losses
-      if (!gameInProgress){
-        document.getElementById('Header').innerHTML = "Press \"Play Again\" to Start Over" 
+      if (!gameInProgress) {
+        document.getElementById('Header').innerHTML = "Press \"Play Again\" to Start Over"
       }
     }
     // remove animate man
